@@ -10,7 +10,7 @@ const path=require('path')
 
 const app=express()
 
-const PORT = 3000
+const PORT =process.env.PORT ||  3000
 
 dotEnv.config()
 
@@ -26,8 +26,34 @@ app.use('/product',productRoutes)
 app.use('/uploads',express.static('uploads'))
        
 
-app.use("/home",(req,res)=>{
-    res.send("<h1>Welcome to zomato</h1>")
+app.use("/",(req,res)=>{
+    res.send(` <html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f7f7f7;
+                color: #333;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            h1 {
+                text-align: center;
+                font-size: 3rem;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to A la 'carte</h1>
+        
+    </body>
+</html>`)
 })
 
 app.listen(PORT,()=>{
