@@ -54,11 +54,13 @@ const vendorLogin=async(req,res)=>{
         return res.status(400).json({error:"Invaild username or password"})
     }
 
-    const token=jwt.sign({vendorId:vendor._id},secretkey,{expiresIn:"1h"})
+    const token=jwt.sign({vendorId:vendor._id,username:vendor.username},secretkey,{expiresIn:"1h"})
 
-    res.status(200).json({message:"Login Succesful",token})
+    res.status(200).json({message:"Login Succesful",token,email,username:vendor.username})
+    // console.log("username:",vendor.username)
     console.log("Email: ",email)
     console.log("Token :",token)
+    
     console.log("Login Success")
 
     } catch (error) {

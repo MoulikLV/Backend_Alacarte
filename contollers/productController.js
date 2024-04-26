@@ -3,6 +3,8 @@ const Product = require('../models/Product')
 
 const multer = require('multer')
 
+const path = require('path')
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/') // Store uploaded files in the 'uploads/' directory

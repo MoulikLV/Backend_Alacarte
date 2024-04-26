@@ -14,4 +14,5 @@ router.get("/image/:imageName",(req,res)=>{
 })
 
 router.delete("/deleteFirm/:firmId",firmController.deleteFirmById)
+
 module.exports=router
