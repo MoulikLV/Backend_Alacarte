@@ -22,7 +22,7 @@ const addProduct = async (req, res) => {
     try {
         const { productName, price, category, bestSeller, description } = req.body
 
-        const image = req.file ? req.file.fileName : undefined;
+        const image = req.file ? req.file.filename: undefined;
 
         const firmId = req.params.firmId
 
@@ -33,14 +33,14 @@ const addProduct = async (req, res) => {
         }
 
         const product = new Product({
-            productName, category, price, image, bestSeller, description, firm: firm._id
+            productName, category, price, image, bestSeller, description,firm: firm._id
         })
 
         const savedProduct = await product.save()
 
 
 
-        firm.product.push(savedProduct)
+        firm.product.push(savedProduct)  
 
         await firm.save()
 

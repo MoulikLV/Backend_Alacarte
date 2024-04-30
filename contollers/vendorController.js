@@ -52,11 +52,14 @@ const vendorLogin=async(req,res)=>{
         const vendor=await Vendor.findOne({email})
     if(!vendor || !(await bcrypt.compare(password,vendor.password))){
         return res.status(400).json({error:"Invaild username or password"})
+        
     }
 
     const token=jwt.sign({vendorId:vendor._id,username:vendor.username},secretkey,{expiresIn:"1h"})
 
-    res.status(200).json({message:"Login Succesful",token,email,username:vendor.username})
+    const vendorId= vendor._id
+
+    res.status(200).json({message:"Login Succesful",token,email,username:vendor.username,vendorId})
     // console.log("username:",vendor.username)
     console.log("Email: ",email)
     console.log("Token :",token)
@@ -89,7 +92,12 @@ const getVendor=async(req,res)=>{
         if(!vendor){
             return res.status(404).json({error:"404 error : Vendor not found"})
         }
-        res.status(200).json({vendor})
+
+        const vendorFirmId= vendor.firm[0]._id  
+
+        res.status(200).json({vendor,vendorFirmId})
+
+        console.log(vendorFirmId)
 
        
 
