@@ -95,7 +95,7 @@ const getVendor=async(req,res)=>{
 
         const vendorFirmId= vendor.firm[0]._id  
 
-        res.status(200).json({vendor,vendorFirmId})
+        res.status(200).json({vendor,vendorFirmId}) 
 
         console.log(vendorFirmId)
 
