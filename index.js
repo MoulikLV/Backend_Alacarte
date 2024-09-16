@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
        .then(()=>console.log("MongoDB connected Succesfully"))
        .catch((error)=>console.log(error))
 
-app.use(cors())
+app.use(cors( {origin: 'http://localhost:5173'}))
 app.use(bodyParser.json())
 app.use('/vendor',vendorRoutes)
 app.use('/firm',firmRoutes)
@@ -57,7 +57,7 @@ app.use("/",(req,res)=>{
 </html>`)
 })
 
-app.listen(PORT,()=>{
+app.listen(PORT,"0.0.0.0",()=>{
     console.log(`server running at port http://localhost:${PORT}`)
 })
 

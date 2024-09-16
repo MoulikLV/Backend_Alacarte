@@ -55,7 +55,12 @@ const vendorLogin=async(req,res)=>{
         
     }
 
-    const token=jwt.sign({vendorId:vendor._id,username:vendor.username},secretkey,{expiresIn:"1h"})
+    const token=jwt.sign({
+       vendor:{
+        vendorId:vendor._id,
+        username:vendor.username
+       }
+    },secretkey,{expiresIn:"1h"})
 
     const vendorId= vendor._id
 
