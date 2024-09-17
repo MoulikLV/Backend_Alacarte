@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
        .then(()=>console.log("MongoDB connected Succesfully"))
        .catch((error)=>console.log(error))
 
-app.use(cors( {origin: 'http://localhost:5173'}))
+app.use(cors( {origin: '*'}))
 app.use(bodyParser.json())
 app.use('/vendor',vendorRoutes)
 app.use('/firm',firmRoutes)
