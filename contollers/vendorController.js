@@ -53,13 +53,15 @@ const vendorLogin=async(req,res)=>{
     if(!vendor || !(await bcrypt.compare(password,vendor.password))){
         return res.status(400).json({error:"Invaild username or password"})
         
+        
     }
+    
 
-    const token=jwt.sign({
-       vendor:{
+    const token=jwt.sign({  
+    //    vendor:{
         vendorId:vendor._id,
-        username:vendor.username
-       }
+        // username:vendor.username
+    //    }
     },secretkey,{expiresIn:"1h"})
 
     const vendorId= vendor._id

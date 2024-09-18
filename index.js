@@ -11,7 +11,7 @@ const cors= require('cors')
 
 const app=express()
 
-const PORT =process.env.PORT ||  4000
+const PORT =process.env.PORT ||  4001
 
 dotEnv.config()
 
@@ -24,7 +24,7 @@ app.use(bodyParser.json())
 app.use('/vendor',vendorRoutes)
 app.use('/firm',firmRoutes)
 app.use('/product',productRoutes)
-app.use('/uploads',express.static('uploads'))
+app.use('/uploads',express.static('uploads'))    
        
 
 app.use("/",(req,res)=>{

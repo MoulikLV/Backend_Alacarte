@@ -27,7 +27,9 @@ const addFirm=async(req,res)=>{
 
     const image=req.file? req.file.filename:undefined;
     
-    const vendor=await Vendor.findById(req.vendorId)
+    const vendor= await Vendor.findById(req.vendorId);
+
+    console.log(req.vendorId)
 
     if(!vendor){
         return res.status(400).json({error:"Vendor not found"})

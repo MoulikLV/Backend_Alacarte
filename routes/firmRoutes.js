@@ -1,6 +1,5 @@
 const firmController=require('../contollers/firmController')
 const verifyToken=require("../middleware/verifyToken")
-
 const express=require("express")
 
 const router=express.Router()
